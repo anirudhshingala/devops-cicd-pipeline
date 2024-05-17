@@ -1,2 +1,5 @@
 # devops-cicd-pipeline
-This repo will have code for cicd of application from github to k8 with monitoring
+1. We will create a github actions pipeline to build and create image of a python application.
+2. Configure our minikube pods as github action runner.
+2. Setup argoCD on local machine on minikube cluster.
+3. Deploy this application on local minikube cluster using above setup. 

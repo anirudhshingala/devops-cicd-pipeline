@@ -1,0 +1,31 @@
+name:  gh-runner-image-push
+
+on:
+  push:
+    branch: ["main"]
+  paths:
+    - '/github-runner/*'
+  
+env:
+  CI: false
+
+jobs:
+  build_deploy:
+    runs-on: ubuntu-20.04
+  
+  steps:
+    - uses: actions/checkout@v1
+      name: checkout repo
+    
+    - name: Build and push Image
+      shell: bash
+      env:
+        REGISTRY: anirudh077
+        IMAGENAME: gh-action-runner
+        TAGNAME: python3
+      run: |
+        #!/bin/bash/
+        cd github-runner
+        docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin ${{ secrets.DOCKER_PASSWORD }}
+        docker build -t ${REGISTRY}/${IMAGENAME}:${TAGNAME} .
+        docker push ${REGISTRY}/${IMAGENAME}:${TAGNAME}
