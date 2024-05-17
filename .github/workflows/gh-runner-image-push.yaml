@@ -2,7 +2,7 @@ name:  gh-runner-image-push
 
 on:
   push:
-    branch:
+    branches:
       - 'main'
   paths:
     - '/github-runner/*'
