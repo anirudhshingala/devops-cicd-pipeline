@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-actions-runner
+  labels:
+    app: github-actions-runner
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: github-actions-runner
+  template:
+    metadata:
+      labels:
+        app: github-actions-runner
+    spec:
+      containers:
+      - name: runner
+        image: anirudh077/gh-action-runner:python3
+        env:
+        - name: RUNNER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: runner-token
+              key: RUNNER_TOKEN
+        - name: GITHUB_ORG
+          value: "anirudhshingala"
+        - name: GITHUB_REPO
+          value: "devops-cicd-pipeline"
+        volumeMounts:
+        - name: dockersock
+          mountPath: /var/run/docker.sock
+        resources:
+          limits:
+            cpu: 200m
+            memory: 2Gi
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
