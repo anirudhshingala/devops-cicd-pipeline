@@ -5,9 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'github-runner/**'
-    paths-ignore:
-      - 'github-runner/runner-k8-manifests/**'
+      - 'github-runner/**'    
   
 env:
   CI: false
