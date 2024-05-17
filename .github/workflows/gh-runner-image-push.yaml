@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - '/github-runner/**'
+      - 'github-runner/**'
   
 env:
   CI: false
