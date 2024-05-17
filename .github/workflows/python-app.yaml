@@ -1,4 +1,4 @@
-name:  gh-runner-image-push
+name:  python-app-pipeline
 
 on:
   push:
