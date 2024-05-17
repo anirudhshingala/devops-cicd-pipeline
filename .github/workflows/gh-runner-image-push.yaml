@@ -6,6 +6,8 @@ on:
       - 'main'
     paths:
       - 'github-runner/**'
+    paths-ignore:
+      - 'github-runner/runner-k8-manifests/**'
   
 env:
   CI: false
