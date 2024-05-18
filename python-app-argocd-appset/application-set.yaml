@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/anirudhshingala/devops-cicd-pipeline'
     targetRevision: HEAD
-    path: my-python-app-helm
+    path: python-app-helm
     helm:
       valueFiles:
         - values.yaml
