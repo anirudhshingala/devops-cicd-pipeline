@@ -108,4 +108,6 @@ a. Make a code chage and commit to repo where you have configured webhook.
 b. This will trigger argocd application to pick helm chart and apply it on mentioned namespace.
 
 
-## Voila You have now achiived man different things under CICD.
+## Voila!! You have now achiived man different things under CICD.
+
+Further we will now integrate Argocd in github actions to fully automate CICD without any manual intervention.
