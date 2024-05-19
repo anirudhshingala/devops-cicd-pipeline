@@ -4,7 +4,7 @@ RUNNER_TOKEN=$(curl -sX POST -H "Authorization: token ${GITHUB_PAT}" \
   https://api.github.com/repos/${GITHUB_OWNER_REPO}/actions/runners/registration-token \
   | jq .token --raw-output)
 
-./config.sh --url https://github.com/${GITHUB_OWNER_REPO} --token ${RUNNER_TOKEN} --name $(hostname) --labels self-hosted,cicd-python
+./config.sh --url https://github.com/${GITHUB_OWNER_REPO} --token ${RUNNER_TOKEN} --name ${HOSTNAME} --labels self-hosted,cicd-python
 
 cleanup() {
   ./config.sh remove --unattended --token ${TOKEN}
