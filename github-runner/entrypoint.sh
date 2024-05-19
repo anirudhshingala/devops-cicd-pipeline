@@ -1,10 +1,10 @@
 #!/bin/bash
 
-TOKEN=${RUNNER_TOKEN}
-ORG=${GITHUB_ORG}
-REPO=${GITHUB_REPO}
+RUNNER_TOKEN=$(curl -sX POST -H "Authorization: token ${GITHUB_PAT}" \
+  https://api.github.com/repos/${GITHUB_OWNER_REPO}/actions/runners/registration-token \
+  | jq .token --raw-output)
 
-./config.sh --url https://github.com/${ORG}/${REPO} --token ${TOKEN}
+./config.sh --url https://github.com/${GITHUB_OWNER_REPO} --token ${TOKEN}
 
 cleanup() {
   ./config.sh remove --token ${TOKEN}

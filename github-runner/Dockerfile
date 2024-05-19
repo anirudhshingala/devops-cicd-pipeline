@@ -34,8 +34,4 @@ RUN tar xzf ./actions-runner-linux-x64-2.299.1.tar.gz
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-COPY generate_runner_token.sh /generate_runner_token.sh
-RUN chmod +x /generate_runner_token.sh
-RUN export RUNNER_TOKEN=$(sh /generate_runner_token.sh)
-
 ENTRYPOINT ["/entrypoint.sh"]

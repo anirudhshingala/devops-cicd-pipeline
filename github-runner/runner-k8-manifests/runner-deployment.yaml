@@ -17,16 +17,6 @@ spec:
       containers:
       - name: runner
         image: anirudh077/gh-action-runner:python3
-        env:
-        - name: RUNNER_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: runner-token
-              key: RUNNER_TOKEN
-        - name: GITHUB_ORG
-          value: "anirudhshingala"
-        - name: GITHUB_REPO
-          value: "devops-cicd-pipeline"
         volumeMounts:
         - name: dockersock
           mountPath: /var/run/docker.sock
