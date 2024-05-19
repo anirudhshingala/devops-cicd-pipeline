@@ -35,10 +35,11 @@ jobs:
         shell: bash
         env:
           ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
-          ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
+          ARGOCD_USERNAME: ${{ secrets.ARGOCD_USERNAME }}
+          ARGOCD_PASSWORD: ${{ secrets.ARGOCD_PASSWORD }}
         run: |
           #!/bin/bash/
           echo "Inside Trigger argo Sync step"
-          argocd login $ARGOCD_SERVER --insecure --username cicd --password $ARGOCD_TOKEN
+          argocd login $ARGOCD_SERVER --insecure --username $ARGOCD_USERNAME --password $ARGOCD_PASSWORD
           argocd app sync my-python-app
           
