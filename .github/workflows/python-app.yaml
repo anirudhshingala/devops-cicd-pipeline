@@ -30,3 +30,9 @@ jobs:
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker build -t ${REGISTRY}/${IMAGENAME}:${TAGNAME} .
           docker push ${REGISTRY}/${IMAGENAME}:${TAGNAME}
+
+      - name: Trigger Argo sync
+        shell: bash
+        run: |
+          #!/bin/bash/
+          echo "Inside Trigger argo Sync step"
