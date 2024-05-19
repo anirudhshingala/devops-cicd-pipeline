@@ -1,1 +1,1 @@
-This is file content of container.
+This is updated file content of container. This pod is now deployed via automatic cicd using github actions and argCD.

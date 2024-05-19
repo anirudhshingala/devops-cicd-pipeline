@@ -31,8 +31,14 @@ jobs:
           docker build -t ${REGISTRY}/${IMAGENAME}:${TAGNAME} .
           docker push ${REGISTRY}/${IMAGENAME}:${TAGNAME}
 
-      - name: Trigger Argo sync
+      - name: Sync ArgoCD Applicatino
         shell: bash
+        env:
+          ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
+          ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
         run: |
           #!/bin/bash/
           echo "Inside Trigger argo Sync step"
+          argocd login $ARGOCD_SERVER --insecure --username cicd --password $ARGOCD_TOKEN
+          argocd app sync my-python-app
+          

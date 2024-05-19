@@ -18,7 +18,8 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io
 
-# RUN groupadd docker && usermod -aG docker $USER
+RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+RUN chmod +x /usr/local/bin/argocd
 
 RUN mkdir /actions-runner && cd /actions-runner
 WORKDIR /actions-runner
