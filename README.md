@@ -108,6 +108,5 @@ a. Make a code chage and commit to repo where you have configured webhook.
 b. This will trigger argocd application to pick helm chart and apply it on mentioned namespace.
 
 
-## Voila!! You have now achiived man different things under CICD.
-
-Further we will now integrate Argocd in github actions to fully automate CICD without any manual intervention.
+### Now we are adding ArgoCD Sync stage to automatically sync application once changes are pushed on github repo
+a. We are adding a script to runner image which will automatically pull actions token and start runner service inside container when runner deployment is restarted.

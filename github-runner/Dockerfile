@@ -1,7 +1,12 @@
 FROM ubuntu:20.04
 
+ARG GITHUB_TOKEN
+ARG GITHUB_REPOSITORY
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV RUNNER_ALLOW_RUNASROOT="1"
+ENV GITHUB_PAT=${GITHUB_TOKEN}
+ENV GITHUB_OWNER_REPO=${GITHUB_REPOSITORY}
 
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -28,5 +33,9 @@ RUN tar xzf ./actions-runner-linux-x64-2.299.1.tar.gz
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+COPY generate_runner_token.sh /generate_runner_token.sh
+RUN chmod +x /generate_runner_token.sh
+RUN export RUNNER_TOKEN=$(sh /generate_runner_token.sh)
 
 ENTRYPOINT ["/entrypoint.sh"]
