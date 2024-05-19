@@ -9,6 +9,7 @@ class FileContentHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
+        print("Dummy code to sync apllication")
         with open(FILE_PATH, 'rb') as file:
             self.wfile.write(file.read())
 
