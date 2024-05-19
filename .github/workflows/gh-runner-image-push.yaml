@@ -28,5 +28,5 @@ jobs:
           #!/bin/bash/
           cd github-runner
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker build -t ${REGISTRY}/${IMAGENAME}:${TAGNAME} --build-arg GITHUB_TOKEN=${{ secrets.DOCKER_USERNAME }} --build-arg GITHUB_REPOSITORY={{ env.GITHUB_REPOSITORY }} .
+          docker build -t ${REGISTRY}/${IMAGENAME}:${TAGNAME} --build-arg GITHUB_TOKEN=${{ secrets.GH_TOKEN }} --build-arg GITHUB_REPOSITORY=${{ github.GITHUB_REPOSITORY }} .
           docker push ${REGISTRY}/${IMAGENAME}:${TAGNAME}
