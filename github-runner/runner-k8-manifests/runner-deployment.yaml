@@ -22,8 +22,8 @@ spec:
           mountPath: /var/run/docker.sock
         resources:
           limits:
-            cpu: 500m
-            memory: 4Gi
+            cpu: 200m
+            memory: 2Gi
         imagePullPolicy: Always
       volumes:
       - name: dockersock
